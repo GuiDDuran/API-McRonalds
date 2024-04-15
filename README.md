@@ -1,6 +1,6 @@
 ### Equipe: 
 * Bernardo Mascarenhas Magalhães
 * Douglas da Silva Ferreira
-* Filipe Gama
+* Filipe Oliveira Saldanha da Gama
 * Guilherme Duran Duran Gea
-* Marcio Moreira
+* Marcio Moreira do Nascimento Filho
