@@ -28,3 +28,21 @@ func (l *ListaProdutos) Remover(idBuscado int) error {
 	fmt.Printf("Produto de id %d não localizado\n", idBuscado)
 	return fmt.Errorf("id %d não localizado", idBuscado)
 }
+
+func (l *ListaProdutos) BuscarPorId(idBuscado int) (*Produto, error) {
+	for _, produto := range l.Produtos{
+		if idBuscado == produto.Id {
+			fmt.Printf("Produto de id %d localizado\n", idBuscado)
+			return &produto, nil
+		}
+	}
+
+	fmt.Printf("Produto de id %d não localizado\n", idBuscado)
+	return nil, fmt.Errorf("id %d não localizado", idBuscado)
+}
+
+func (l *ListaProdutos) ListarProdutos() {
+    for _, produto := range l.Produtos {
+        fmt.Printf("ID: %d, Nome: %s, Descrição: %s, Valor: R$ %.2f\n", produto.Id, produto.Nome, produto.Descricao, produto.Valor)
+    }
+}
