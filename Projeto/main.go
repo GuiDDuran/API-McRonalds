@@ -1,6 +1,7 @@
 package main
 
 import (
+	//"Projeto/modelos/pedido"
 	"Projeto/modelos/produto"
 	"fmt"
 )
@@ -32,4 +33,12 @@ func main(){
 	lista.Adicionar("Banana", "Frita", 15.0)
 	lista.Adicionar("Batata Doce", "Frita", 32.0)
 	lista.ListarProdutos()
+
+	/*fila := pedido.FilaPedidos{}
+	fila.Adicionar(true, lista.Produtos, 15.0)
+
+    fmt.Println("Fila de Pedidos:")
+    for _, pedido := range fila.Pedidos {
+        fmt.Printf("ID: %d, Delivery: %t, Valor Total: R$ %.2f\n", pedido.Id, pedido.Delivery, pedido.ValorTotal)
+    }*/ 
 }
