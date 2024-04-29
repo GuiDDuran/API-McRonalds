@@ -6,3 +6,5 @@ type Sistema struct {
     PedidosAndamento  int     `json:"pedidosandamento"`
     FaturamentoTotal  float64 `json:"faturamentototal"`
 }
+
+var Metricas Sistema

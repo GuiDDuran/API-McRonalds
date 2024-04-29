@@ -8,6 +8,8 @@ type FilaPedidos struct {
 	Pedidos []Pedido `json:"pedidos"`
 }
 
+var FPedidos FilaPedidos
+
 func (f *FilaPedidos) Adicionar(delivery bool, produtos []produto.Produto, valorTotal float64){
 	p := Pedido{
 		Delivery: delivery,
@@ -18,7 +20,7 @@ func (f *FilaPedidos) Adicionar(delivery bool, produtos []produto.Produto, valor
 	f.Pedidos = append(f.Pedidos, p)
 }
 
-func (f *FilaPedidos) Remover() {
+func (f *FilaPedidos) Expedir() {
     if len(f.Pedidos) > 0 {
         f.Pedidos = f.Pedidos[1:]
     }

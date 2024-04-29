@@ -6,6 +6,8 @@ type ListaProdutos struct {
     Produtos []Produto `json:"produtos"`
 }
 
+var LProdutos ListaProdutos
+
 func (l *ListaProdutos) Adicionar(nome, descricao string, valor float64) {
     p := Produto{
         Nome:      nome,
