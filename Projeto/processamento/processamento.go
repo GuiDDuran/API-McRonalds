@@ -10,17 +10,12 @@ import (
 func ProcessarPedidos() {
 	for {
 		if loja_handler.Aberta {
-			pedidosAtivos := pedido.FPedidos.ListarPedidos()
-
-			if len(pedidosAtivos) > 0 {
+			if len(pedido.FPedidos.Pedidos) > 0 {
 				pedido.FPedidos.Expedir()
 			} else {
 				fmt.Println("Não há pedidos ativos.")
 			}
 			time.Sleep(30 * time.Second)
-		} else {
-			fmt.Println("A loja está fechada.")
-			return
 		}
 	}
 }
