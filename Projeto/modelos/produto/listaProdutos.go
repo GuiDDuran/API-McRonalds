@@ -1,6 +1,9 @@
 package produto
 
-import "fmt"
+import (
+	"Projeto/modelos/metricas"
+	"fmt"
+)
 
 type ListaProdutos struct {
     Produtos []Produto `json:"produtos"`
@@ -16,6 +19,8 @@ func (l *ListaProdutos) Adicionar(nome, descricao string, valor float64) {
     }
     p.criaID()
     l.Produtos = append(l.Produtos, p)
+
+    metricas.Metricas.TotalProdutos++
 }
 
 func (l *ListaProdutos) Remover(idBuscado int) error {
@@ -23,6 +28,7 @@ func (l *ListaProdutos) Remover(idBuscado int) error {
         if idBuscado == produto.Id {
             l.Produtos = append(l.Produtos[:i], l.Produtos[i+1:]...)
             fmt.Printf("Produto de id %d removido\n", idBuscado)
+            metricas.Metricas.TotalProdutos--
             return nil
         }
     }

@@ -1,14 +1,15 @@
 package main
 
 import (
-	"Projeto/handlers/produtos"
-	"Projeto/handlers/pedidos"
 	"Projeto/handlers/loja"
+	"Projeto/handlers/metricas"
+	"Projeto/handlers/pedidos"
+	"Projeto/handlers/produtos"
 	"Projeto/processamento"
 	"fmt"
 	"net/http"
 
-	"github.com/gorilla/mux" 
+	"github.com/gorilla/mux"
 )
 
 func main() {
@@ -26,7 +27,7 @@ func main() {
 	r.HandleFunc("/abrir", loja_handler.AbrirLoja).Methods("POST")
 	r.HandleFunc("/fechar", loja_handler.FecharLoja).Methods("POST")
 
-	//r.HandleFunc("/metricas", handlers.ObterMetricas).Methods("GET")
+	r.HandleFunc("/metricas", metricas_handlers.ObterMetricas).Methods("GET")
 
 	go processamento.ProcessarPedidos()
 
