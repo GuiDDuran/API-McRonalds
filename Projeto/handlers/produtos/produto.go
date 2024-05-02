@@ -1,71 +1,81 @@
 package produtos_handlers
 
 import (
-    "encoding/json"
-    "fmt"
-    "net/http"
-    "strconv"
-    "Projeto/modelos/produto"
-    "github.com/gorilla/mux"
+	"Projeto/modelos/produto"
+	"encoding/json"
+	"fmt"
+	"net/http"
+	"strconv"
+
+	"github.com/gorilla/mux"
 )
 
 func AdicionarProduto(w http.ResponseWriter, r *http.Request) {
-    var novoProduto produto.Produto
+	var novoProduto produto.Produto
 
-    err := json.NewDecoder(r.Body).Decode(&novoProduto)
-    if err != nil {
-        http.Error(w, "Erro ao decodificar dados do produto", http.StatusBadRequest)
-        return
-    }
+	err := json.NewDecoder(r.Body).Decode(&novoProduto)
+	if err != nil {
+		http.Error(w, "Erro ao decodificar dados do produto", http.StatusBadRequest)
+		return
+	}
 
-    produto.LProdutos.Adicionar(novoProduto.Nome, novoProduto.Descricao, novoProduto.Valor)
+	produto.LProdutos.Adicionar(novoProduto.Nome, novoProduto.Descricao, novoProduto.Valor)
 
-    w.WriteHeader(http.StatusOK)
-    w.Header().Set("Content-Type", "text/html; charset=UTF-8")
-    w.Write([]byte("Produto cadastrado com sucesso!"))
+	w.WriteHeader(http.StatusOK)
+	w.Header().Set("Content-Type", "text/html; charset=UTF-8")
+	w.Write([]byte("Produto cadastrado com sucesso!"))
 }
 
 func ObterProduto(w http.ResponseWriter, r *http.Request) {
-    params := mux.Vars(r)
+	params := mux.Vars(r)
 	id, err := strconv.Atoi(params["id"])
-    if err != nil {
-        http.Error(w, "ID inválido", http.StatusBadRequest)
-        return
-    }
+	if err != nil {
+		http.Error(w, "ID inválido", http.StatusBadRequest)
+		return
+	}
 
-    produto, err := produto.LProdutos.BuscarPorId(id)
-    if err != nil {
-        http.Error(w, "Produto não encontrado", http.StatusNotFound)
-        return
-    }
+	produto, err := produto.LProdutos.BuscarPorId(id)
+	if err != nil {
+		http.Error(w, "Produto não encontrado", http.StatusNotFound)
+		return
+	}
 
-    w.WriteHeader(http.StatusOK)
-    w.Header().Set("Content-Type", "application/json")
-    json.NewEncoder(w).Encode(produto)
+	w.WriteHeader(http.StatusOK)
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(produto)
 }
 
 func RemoverProduto(w http.ResponseWriter, r *http.Request) {
-    params := mux.Vars(r)
+	params := mux.Vars(r)
 	id, err := strconv.Atoi(params["id"])
-    if err != nil {
-        http.Error(w, "ID inválido", http.StatusBadRequest)
-        return
-    }
+	if err != nil {
+		http.Error(w, "ID inválido", http.StatusBadRequest)
+		return
+	}
 
-    err = produto.LProdutos.Remover(id)
-    if err != nil {
-        http.Error(w, "Produto não encontrado", http.StatusNotFound)
-        return
-    }
+	err = produto.LProdutos.Remover(id)
+	if err != nil {
+		http.Error(w, "Produto não encontrado", http.StatusNotFound)
+		return
+	}
 
-    w.WriteHeader(http.StatusOK)
-    fmt.Fprintln(w, "Produto removido com sucesso")
+	w.WriteHeader(http.StatusOK)
+	fmt.Fprintln(w, "Produto removido com sucesso")
 }
 
 func ListarProdutos(w http.ResponseWriter, r *http.Request) {
-    todosOsProdutos := produto.LProdutos.ListarProdutos()
+	todosOsProdutos := produto.LProdutos.ListarProdutos()
 
-    w.WriteHeader(http.StatusOK)
-    w.Header().Set("Content-Type", "application/json")
-    json.NewEncoder(w).Encode(todosOsProdutos)
+	// Verificar se o slice de produtos está vazio
+	if len(todosOsProdutos) == 0 {
+		mensagemErro := map[string]string{"mensagem": "Nenhum produto encontrado"}
+		w.WriteHeader(http.StatusNotFound) // Ou qualquer outro código de status apropriado
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(mensagemErro)
+		return
+	}
+
+	w.WriteHeader(http.StatusOK)
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(todosOsProdutos)
 }
