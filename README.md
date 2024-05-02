@@ -12,7 +12,7 @@
 ## Adicionar Produto
 Com a main rodando, a primeira requisição será a de Adicionar Produto que utilizará um método POST através da URL http://localhost:8080/produto.
 
-Para adicionar um produto terá que passar no body (raw) da requisição um json como neste modelo.
+Para adicionar um produto terá que passar no body (raw) da requisição um json como neste [modelo](https://github.com/GuiDDuran/API-McRonalds-ProjetoAP1/blob/main/Modelos%20Json/JSON-Pedidos.txt).
 
 Caso o cadastro seja bem sucedido, como retorno receberá a mensagem "Produto cadastrado com sucesso!".
 
@@ -47,7 +47,7 @@ Ou caso o id passado não seja correspondente, como por exemplo, tentar acessar 
 ## Adicionar Pedido
 Para adicinar um pedido usa-se um método POST através da URL http://localhost:8080/pedido.
 
-Para adicionar um produto terá que passar no body (raw) da requisição um json como neste modelo.
+Para adicionar um produto terá que passar no body (raw) da requisição um json como neste [modelo](https://github.com/GuiDDuran/API-McRonalds-ProjetoAP1/blob/main/Modelos%20Json/JSON-Pedidos.txt).
 
 Caso o cadastro seja bem sucedido, como retorno receberá a mensagem "Pedido cadastrado com sucesso!".
 
@@ -77,19 +77,19 @@ Após o envio da requisição, será retornado no body todas as informações re
 
 
 ## Fluxo de teste
-1 - Adicione os produtos 1 e 2 disponíveis aqui.<br>
+1 - Adicione os produtos 1 e 2 disponíveis [aqui](https://github.com/GuiDDuran/API-McRonalds-ProjetoAP1/blob/main/Modelos%20Json/JSON-Produtos.txt).<br>
 2 - Liste todos os produtos.<br>
 3 - Busque o produto 1 pelo seu id.<br>
 4 - Remova o produto 2 passando seu id.<br>
-5 - Adicione o produto 3 disponível aqui.<br>
+5 - Adicione o produto 3 disponível [aqui](https://github.com/GuiDDuran/API-McRonalds-ProjetoAP1/blob/main/Modelos%20Json/JSON-Produtos.txt).<br>
 6 - Liste todos os produtos.<br>
-7 - Adicione o pedido 1 disponível aqui.<br>
+7 - Adicione o pedido 1 disponível [aqui](https://github.com/GuiDDuran/API-McRonalds-ProjetoAP1/blob/main/Modelos%20Json/JSON-Pedidos.txt).<br>
 8 - Obtenha os pedidos<br>
 9 - Obtenha as métricas<br>
 10 - Abra a loja<br>
 11 - Obtenha os pedidos<br>
 12 - Obtenha as métricas<br>
-13 - Adicione o pedido 2 disponível aqui.<br>
+13 - Adicione o pedido 2 disponível [aqui](https://github.com/GuiDDuran/API-McRonalds-ProjetoAP1/blob/main/Modelos%20Json/JSON-Pedidos.txt).<br>
 14 - Obtenha os pedidos<br>
 15 - Obtenha as métricas<br>
 16 - Feche a loja<br>
