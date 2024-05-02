@@ -1,0 +1,20 @@
+Produto 1:
+{
+    "nome": "Batata Frita",
+    "descricao": "Batata frita crocante e sequinha acompanhada de maionese da casa",
+    "valor": 20.00
+}
+
+Produto 2:
+{
+    "nome": "Hambuguer Bacon Blast",
+    "descricao": "Pão, hambúrguer, bacon, queijo, alface, tomate, maionese e ketchup",
+    "valor": 40.50
+}
+
+Produto 3:
+{
+    "nome": "Hamburguer 'Big Quack'",
+    "descricao": "Pão, hambúrguer de pato, cheddar americano, cebola caramelizada, alface, tomate e molho especial",
+    "valor": 45.00
+}
