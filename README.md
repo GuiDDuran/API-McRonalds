@@ -17,14 +17,28 @@ Caso o haja algum erro no momento de cadastro, o retorno será a mensagem "Erro 
 ### Listar Produtos
 Após adicionar um produto é possivel Listar Produtos enviando uma requisição que utilizará um método GET através da URL http://localhost:8080/produtos.<br>
 Caso haja algum produto cadastrado, como retorno receberá uma lista com os produtos cadastrados em formato json.
-Caso nenhum produto tenha sido cadastrado, o retorno será (uma mensagem)
+Caso nenhum produto tenha sido cadastrado, o retorno será "Nenhum produto encontrado"
 
 ### Obter Produto Por Id
-Além de poder Listar Produtos, pode-se Obter Produto Por Id
+Além de poder Listar Produtos, pode-se Obter um Produto Por meio de seu Id usando um método get através da url  http://localhost:8080/produto{id}.<br>
+Caso haja o usuário esteja tentando obeter um id nao cadastrado no sistema, o retorno sera uma mensagem "Produto não encontrado".<br>
+Ou caso o id passado não seja correspondente como por exemplo tentar acessar por um character em vez de um inteiro retornará ID inválido.<br>
+
+### Remover Produto Por Id
+Assim como a funcao obter produtos, a funcão remover por meio de um id usa o método delete pela mesma url, ou seja,http://localhost:8080/produto{id}. <br>
+Caso haja o usuário esteja tentando remover um id nao cadastrado no sistema, o retorno sera uma mensagem "Produto não encontrado".<br>
+Ou caso o id passado não seja correspondente como por exemplo tentar acessar por um character em vez de um inteiro retornará ID inválido.<br>
 
 ### Adicionar Pedido
-
+Para adicinar um pedido usa-se um método post através da url http://localhost:8080/pedido.<br>
+Para adicionar um produto terá que passar no body (raw) da requisição um json como neste modelo.<br>
+Caso o cadastro seja bem sucedido, como retorno receberá a mensagem "Pedido cadastrado com sucesso!".<br>
+Caso o haja algum erro no momento de cadastro, o retorno será a mensagem "Erro ao decodificar dados do pedido".<br><br>
 ### Obter Pedidos
+Para obter os pedidos, usamos um método get através da url  http://localhost:8080/pedidos
+Caso haja algum pedido cadastrado, como retorno receberá uma lista com os pedidos cadastrados em formato json.
+Caso nenhum produto tenha sido cadastrado, o retorno será "Nenhum pedido encontrado"
+
 
 ### Abrir Loja
 
