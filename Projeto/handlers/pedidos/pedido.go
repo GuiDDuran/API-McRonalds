@@ -33,8 +33,7 @@ func ObterPedidos(w http.ResponseWriter, r *http.Request) {
 	pedidosAtivos := pedido.FPedidos.ListarPedidos()
 
 	if len(pedidosAtivos) == 0 {
-		mensagemErro := "Nenhum pedido encontrado"
-		http.Error(w, mensagemErro, http.StatusNotFound)
+		http.Error(w, "Nenhum pedido encontrado", http.StatusNotFound)
 		return
 	}
 

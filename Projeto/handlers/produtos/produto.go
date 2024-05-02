@@ -67,8 +67,8 @@ func ListarProdutos(w http.ResponseWriter, r *http.Request) {
 	todosOsProdutos := produto.LProdutos.ListarProdutos()
 
 	if len(todosOsProdutos) == 0 {
-		mensagemErro := "Nenhum produto encontrado"
-		http.Error(w, mensagemErro, http.StatusNotFound)
+
+		http.Error(w, "Nenhum produto encontrado", http.StatusNotFound)
 		return
 	}
 
