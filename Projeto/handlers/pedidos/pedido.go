@@ -32,6 +32,12 @@ func AdicionarPedido(w http.ResponseWriter, r *http.Request) {
 func ObterPedidos(w http.ResponseWriter, r *http.Request) {
 	pedidosAtivos := pedido.FPedidos.ListarPedidos()
 
+	if len(pedidosAtivos) == 0 {
+		mensagemErro := "Nenhum pedido encontrado"
+		http.Error(w, mensagemErro, http.StatusNotFound)
+		return
+	}
+
 	w.WriteHeader(http.StatusOK)
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(pedidosAtivos)

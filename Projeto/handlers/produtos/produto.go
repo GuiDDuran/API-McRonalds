@@ -66,12 +66,9 @@ func RemoverProduto(w http.ResponseWriter, r *http.Request) {
 func ListarProdutos(w http.ResponseWriter, r *http.Request) {
 	todosOsProdutos := produto.LProdutos.ListarProdutos()
 
-	// Verificar se o slice de produtos está vazio
 	if len(todosOsProdutos) == 0 {
-		mensagemErro := map[string]string{"mensagem": "Nenhum produto encontrado"}
-		w.WriteHeader(http.StatusNotFound) // Ou qualquer outro código de status apropriado
-		w.Header().Set("Content-Type", "application/json")
-		json.NewEncoder(w).Encode(mensagemErro)
+		mensagemErro := "Nenhum produto encontrado"
+		http.Error(w, mensagemErro, http.StatusNotFound)
 		return
 	}
 
