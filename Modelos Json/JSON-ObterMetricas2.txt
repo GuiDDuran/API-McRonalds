@@ -1,0 +1,6 @@
+{
+    "totalprodutos": 2,
+    "pedidosencerrados": 1,
+    "pedidosandamento": 0,
+    "faturamentototal": 20
+}
