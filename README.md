@@ -80,16 +80,16 @@ Após o envio da requisição, será retornado no body todas as informações re
 1 - Adicione os produtos 1 e 2 disponíveis [aqui](https://github.com/GuiDDuran/API-McRonalds-ProjetoAP1/blob/main/Modelos%20Json/JSON-Produtos.txt).<br>
 2 - Liste todos os produtos. ([Resposta esperada](https://github.com/GuiDDuran/API-McRonalds-ProjetoAP1/blob/main/Modelos%20Json/JSON-ListaProdutos1.txt))<br>
 3 - Busque o produto 1 pelo seu id. ([Resposta esperada](https://github.com/GuiDDuran/API-McRonalds-ProjetoAP1/blob/main/Modelos%20Json/JSON-BuscaProduto1.txt))<br>
-4 - Remova o produto 2 passando seu id.<br>
+4 - Remova o produto 2 passando seu id. (Resposta esperada: Nenhum pedido encontrado)<br>
 5 - Adicione o produto 3 disponível [aqui](https://github.com/GuiDDuran/API-McRonalds-ProjetoAP1/blob/main/Modelos%20Json/JSON-Produtos.txt).<br>
 6 - Liste todos os produtos. ([Resposta esperada](https://github.com/GuiDDuran/API-McRonalds-ProjetoAP1/blob/main/Modelos%20Json/JSON-ListaProdutos2.txt))<br>
 7 - Adicione o pedido 1 disponível [aqui](https://github.com/GuiDDuran/API-McRonalds-ProjetoAP1/blob/main/Modelos%20Json/JSON-Pedidos.txt).<br>
-8 - Obtenha os pedidos ([Resposta esperada](https://github.com/GuiDDuran/API-McRonalds-ProjetoAP1/blob/main/Modelos%20Json/JSON-ObterPedidos1.txt))<br>
-9 - Obtenha as métricas ([Resposta esperada](https://github.com/GuiDDuran/API-McRonalds-ProjetoAP1/blob/main/Modelos%20Json/JSON-ObterMetricas1.txt))<br>
-10 - Abra a loja e espere 30 segundos<br>
-11 - Obtenha os pedidos (Resposta esperada: Nenhum pedido encontrado)<br>
-12 - Obtenha as métricas<br>
+8 - Obtenha os pedidos. ([Resposta esperada](https://github.com/GuiDDuran/API-McRonalds-ProjetoAP1/blob/main/Modelos%20Json/JSON-ObterPedidos1.txt))<br>
+9 - Obtenha as métricas. ([Resposta esperada](https://github.com/GuiDDuran/API-McRonalds-ProjetoAP1/blob/main/Modelos%20Json/JSON-ObterMetricas1.txt))<br>
+10 - Abra a loja e espere 30 segundos.<br>
+11 - Obtenha os pedidos (Resposta esperada: Produto removido com sucesso).<br>
+12 - Obtenha as métricas. ([Resposta esperada](https://github.com/GuiDDuran/API-McRonalds-ProjetoAP1/blob/main/Modelos%20Json/JSON-ObterMetricas2.txt))<br>
 13 - Adicione o pedido 2 disponível [aqui](https://github.com/GuiDDuran/API-McRonalds-ProjetoAP1/blob/main/Modelos%20Json/JSON-Pedidos.txt).<br>
-14 - Obtenha os pedidos<br>
-15 - Obtenha as métricas<br>
+14 - Obtenha os pedidos. ([Resposta esperada](https://github.com/GuiDDuran/API-McRonalds-ProjetoAP1/blob/main/Modelos%20Json/JSON-ObterPedidos3.txt))<br>
+15 - Obtenha as métricas. ([Resposta esperada](https://github.com/GuiDDuran/API-McRonalds-ProjetoAP1/blob/main/Modelos%20Json/JSON-ObterMetricas3.txt))<br>
 16 - Feche a loja<br>
