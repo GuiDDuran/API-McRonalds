@@ -12,7 +12,7 @@
 ## Adicionar Produto
 Com a main rodando, a primeira requisição será a de Adicionar Produto que utilizará um método POST através da URL http://localhost:8080/produto.
 
-Para adicionar um produto terá que passar no body (raw) da requisição um json como neste [modelo](https://github.com/GuiDDuran/API-McRonalds-ProjetoAP1/blob/main/Modelos%20Json/JSON-Pedidos.txt).
+Para adicionar um produto terá que passar no body (raw) da requisição um json como neste [modelo](https://github.com/GuiDDuran/API-McRonalds-ProjetoAP1/blob/main/Modelos%20Json/JSON-Produto.txt).
 
 Caso o cadastro seja bem sucedido, como retorno receberá a mensagem "Produto cadastrado com sucesso!".
 
