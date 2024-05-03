@@ -86,8 +86,8 @@ Após o envio da requisição, será retornado no body todas as informações re
 7 - Adicione o pedido 1 disponível [aqui](https://github.com/GuiDDuran/API-McRonalds-ProjetoAP1/blob/main/Modelos%20Json/JSON-Pedidos.txt).<br>
 8 - Obtenha os pedidos ([Resposta esperada](https://github.com/GuiDDuran/API-McRonalds-ProjetoAP1/blob/main/Modelos%20Json/JSON-ObterPedidos1.txt))<br>
 9 - Obtenha as métricas ([Resposta esperada](https://github.com/GuiDDuran/API-McRonalds-ProjetoAP1/blob/main/Modelos%20Json/JSON-ObterMetricas1.txt))<br>
-10 - Abra a loja<br>
-11 - Obtenha os pedidos<br>
+10 - Abra a loja e espere 30 segundos<br>
+11 - Obtenha os pedidos (Resposta esperada: Nenhum pedido encontrado)<br>
 12 - Obtenha as métricas<br>
 13 - Adicione o pedido 2 disponível [aqui](https://github.com/GuiDDuran/API-McRonalds-ProjetoAP1/blob/main/Modelos%20Json/JSON-Pedidos.txt).<br>
 14 - Obtenha os pedidos<br>
