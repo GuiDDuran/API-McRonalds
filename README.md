@@ -36,7 +36,7 @@ Caso o usuário esteja tentando obeter um id nao cadastrado no sistema, o retorn
 Ou caso o id passado não seja correspondente, como por exemplo, tentar acessar por um caracter em vez de um inteiro, retornará a mensagem "ID inválido".
 
 ## Remover Produto Por Id
-Assim como a funcao obter produtos, a funcão remover por meio de um id usa o método DELETE pela mesma URL, ou seja, http://localhost:8080/produto{id}.
+Assim como a funcao obter produtos, a funcão remover por meio de um id usa o método DELETE pela mesma URL http://localhost:8080/produto{id}.
 
 Caso o usuário tente obter um produto com um id cadastrado, ele receberá a mensagem "produto de id {id} removido" e no body da requisição receberá a mensagem "Produto removido com sucesso".
 
