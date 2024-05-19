@@ -1,8 +1,9 @@
 package pedido
 
 import (
-	"Projeto/modelos/produto"
 	"Projeto/modelos/metricas"
+	"Projeto/modelos/produto"
+	"errors"
 )
 
 type FilaPedidos struct {
@@ -12,8 +13,13 @@ type FilaPedidos struct {
 var FPedidos FilaPedidos
 var valorTotal float64
 var faturamentoTotal float64
+var TicketMedio float64
 
 func (f *FilaPedidos) Adicionar(delivery bool, produtosIDs []int) error {
+	if len(produtosIDs) == 0 {
+		return errors.New("a lista de produtos não pode ser vazia")
+	}
+
 	var produtos []produto.Produto
 	valorTotal = 0
 
@@ -24,13 +30,17 @@ func (f *FilaPedidos) Adicionar(delivery bool, produtosIDs []int) error {
 		}
 		produtos = append(produtos, *prod)
 		valorTotal += prod.Valor
-		faturamentoTotal += prod.Valor
 	}
 
 	if delivery{
 		valorTotal += 10
-		faturamentoTotal += 10
 	}
+
+	if valorTotal > 100 {
+		valorTotal -= valorTotal * 0.10
+	}
+
+	faturamentoTotal += valorTotal
 
 	p := Pedido{
 		Delivery:   delivery,
@@ -53,6 +63,7 @@ func (f *FilaPedidos) Expedir() {
 	metricas.Metricas.PedidosAndamento--
 	metricas.Metricas.PedidosEncerrados++
 	metricas.Metricas.FaturamentoTotal = faturamentoTotal
+	metricas.Metricas.TicketMedio = faturamentoTotal / float64(metricas.Metricas.PedidosEncerrados)
 }
 
 func (f *FilaPedidos) ListarPedidos() []Pedido {

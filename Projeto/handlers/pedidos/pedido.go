@@ -3,8 +3,15 @@ package pedidos_handlers
 import (
 	"Projeto/modelos/pedido"
 	"encoding/json"
+	"fmt"
 	"net/http"
+	"time"
 )
+
+func logMessage(message string) {
+	var Horario = time.Now().Format("02/01/2006 15:04:05")
+    fmt.Printf("%s - %s\n", Horario, message)
+}
 
 func AdicionarPedido(w http.ResponseWriter, r *http.Request) {
 	var novoPedido struct {
@@ -14,7 +21,14 @@ func AdicionarPedido(w http.ResponseWriter, r *http.Request) {
 
 	err := json.NewDecoder(r.Body).Decode(&novoPedido)
 	if err != nil {
+		logMessage("Erro ao decodificar dados do pedido")
 		http.Error(w, "Erro ao decodificar dados do pedido", http.StatusBadRequest)
+		return
+	}
+
+	if len(novoPedido.ProdutosIDs) == 0 {
+		logMessage("A lista de produtos não pode ser vazia")
+		http.Error(w, "A lista de produtos não pode ser vazia", http.StatusBadRequest)
 		return
 	}
 
@@ -26,6 +40,7 @@ func AdicionarPedido(w http.ResponseWriter, r *http.Request) {
 
 	w.WriteHeader(http.StatusOK)
 	w.Header().Set("Content-Type", "text/html; charset=UTF-8")
+	logMessage("Pedido cadastrado com sucesso!")
 	w.Write([]byte("Pedido cadastrado com sucesso!"))
 }
 
@@ -34,5 +49,6 @@ func ObterPedidos(w http.ResponseWriter, r *http.Request) {
 
 	w.WriteHeader(http.StatusOK)
 	w.Header().Set("Content-Type", "application/json")
+	logMessage("Obtendo pedidos")
 	json.NewEncoder(w).Encode(pedidosAtivos)
 }

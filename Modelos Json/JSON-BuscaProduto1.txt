@@ -1,0 +1,6 @@
+{
+    "id": 1,
+    "nome": "Batata Frita",
+    "descricao": "Batata frita crocante e sequinha acompanhada de maionese da casa",
+    "valor": 20
+}

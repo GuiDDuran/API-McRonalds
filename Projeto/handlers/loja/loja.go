@@ -1,21 +1,26 @@
 package loja_handler
 
-
 import (
-	"fmt"
-	"net/http"
+    "fmt"
+    "net/http"
+    "time"
 )
 
 var Aberta bool
 
+func logMessage(message string) {
+    var Horario = time.Now().Format("02/01/2006 15:04:05")
+    fmt.Printf("%s - %s\n", Horario, message)
+}
+
 func AbrirLoja(w http.ResponseWriter, r *http.Request) {
-	Aberta = true
-	fmt.Println("Loja aberta")
-	w.WriteHeader(http.StatusOK)
+    Aberta = true
+    logMessage("Loja aberta")
+    w.WriteHeader(http.StatusOK)
 }
 
 func FecharLoja(w http.ResponseWriter, r *http.Request) {
-	Aberta = false
-	fmt.Println("Loja fechada")
-	w.WriteHeader(http.StatusOK)
+    Aberta = false
+    logMessage("Loja fechada")
+    w.WriteHeader(http.StatusOK)
 }

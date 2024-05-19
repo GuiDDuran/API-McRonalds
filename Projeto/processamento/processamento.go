@@ -1,8 +1,9 @@
 package processamento
 
 import (
-	"Projeto/modelos/pedido"
 	"Projeto/handlers/loja"
+	"Projeto/modelos/metricas"
+	"Projeto/modelos/pedido"
 	"fmt"
 	"time"
 )
@@ -15,7 +16,15 @@ func ProcessarPedidos() {
 			} else {
 				fmt.Println("Não há pedidos ativos.")
 			}
-			time.Sleep(5 * time.Second)
+			time.Sleep(30 * time.Second)
 		}
+	}
+}
+
+func ContarTempoDeFuncionamento(){
+	inicio := time.Now()
+	for {
+		metricas.Metricas.TempoFuncionamento = int64(time.Since(inicio).Seconds())
+		time.Sleep(1 * time.Second)
 	}
 }

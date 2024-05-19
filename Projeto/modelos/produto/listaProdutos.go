@@ -27,25 +27,19 @@ func (l *ListaProdutos) Remover(idBuscado int) error {
     for i, produto := range l.Produtos {
         if idBuscado == produto.Id {
             l.Produtos = append(l.Produtos[:i], l.Produtos[i+1:]...)
-            fmt.Printf("Produto de id %d removido\n", idBuscado)
             metricas.Metricas.TotalProdutos--
             return nil
         }
     }
-
-    fmt.Printf("Produto de id %d não localizado\n", idBuscado)
     return fmt.Errorf("id %d não localizado", idBuscado)
 }
 
 func (l *ListaProdutos) BuscarPorId(idBuscado int) (*Produto, error) {
     for _, produto := range l.Produtos {
         if idBuscado == produto.Id {
-            fmt.Printf("Produto de id %d localizado\n", idBuscado)
             return &produto, nil
         }
     }
-
-    fmt.Printf("Produto de id %d não localizado\n", idBuscado)
     return nil, fmt.Errorf("id %d não localizado", idBuscado)
 }
 

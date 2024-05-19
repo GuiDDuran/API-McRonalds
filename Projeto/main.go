@@ -1,10 +1,10 @@
 package main
 
 import (
-	"Projeto/handlers/loja"
-	"Projeto/handlers/metricas"
-	"Projeto/handlers/pedidos"
-	"Projeto/handlers/produtos"
+	loja_handler "Projeto/handlers/loja"
+	metricas_handlers "Projeto/handlers/metricas"
+	pedidos_handlers "Projeto/handlers/pedidos"
+	produtos_handlers "Projeto/handlers/produtos"
 	"Projeto/processamento"
 	"fmt"
 	"net/http"
@@ -30,6 +30,7 @@ func main() {
 	r.HandleFunc("/metricas", metricas_handlers.ObterMetricas).Methods("GET")
 
 	go processamento.ProcessarPedidos()
+	go processamento.ContarTempoDeFuncionamento()
 
 	fmt.Println("Servidor iniciado em http://localhost:8080")
 	http.ListenAndServe(":8080", r)

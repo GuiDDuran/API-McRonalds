@@ -1,0 +1,21 @@
+[
+    {
+        "id": 2,
+        "delivery": true,
+        "produtos": [
+            {
+                "id": 1,
+                "nome": "Batata Frita",
+                "descricao": "Batata frita crocante e sequinha acompanhada de maionese da casa",
+                "valor": 20
+            },
+            {
+                "id": 3,
+                "nome": "Hamburguer 'Big Quack'",
+                "descricao": "Pão, hambúrguer de pato, cheddar americano, cebola caramelizada, alface, tomate e molho especial",
+                "valor": 45
+            }
+        ],
+        "valortotal": 75
+    }
+]
