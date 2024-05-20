@@ -45,7 +45,15 @@ func AdicionarPedido(w http.ResponseWriter, r *http.Request) {
 }
 
 func ObterPedidos(w http.ResponseWriter, r *http.Request) {
-	pedidosAtivos := pedido.FPedidos.ListarPedidos()
+	ordenacao := r.URL.Query().Get("ordenacao")
+
+	pedidosAtivos := pedido.FPedidos.ListarPedidos(ordenacao)
+
+	if len(pedidosAtivos) == 0 {
+		logMessage("Não há pedidos ativos")
+		http.Error(w, "Não há pedidos ativos", http.StatusNotFound)
+		return
+	}
 
 	w.WriteHeader(http.StatusOK)
 	w.Header().Set("Content-Type", "application/json")

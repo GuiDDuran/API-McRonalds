@@ -16,7 +16,7 @@ func ProcessarPedidos() {
 			} else {
 				fmt.Println("Não há pedidos ativos.")
 			}
-			time.Sleep(30 * time.Second)
+			time.Sleep(loja_handler.IntervaloExpedicao)
 		}
 	}
 }

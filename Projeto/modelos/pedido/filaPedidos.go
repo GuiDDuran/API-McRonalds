@@ -4,6 +4,7 @@ import (
 	"Projeto/modelos/metricas"
 	"Projeto/modelos/produto"
 	"errors"
+	"sort"
 )
 
 type FilaPedidos struct {
@@ -32,7 +33,7 @@ func (f *FilaPedidos) Adicionar(delivery bool, produtosIDs []int) error {
 		valorTotal += prod.Valor
 	}
 
-	if delivery{
+	if delivery {
 		valorTotal += 10
 	}
 
@@ -66,6 +67,56 @@ func (f *FilaPedidos) Expedir() {
 	metricas.Metricas.TicketMedio = faturamentoTotal / float64(metricas.Metricas.PedidosEncerrados)
 }
 
-func (f *FilaPedidos) ListarPedidos() []Pedido {
+func bubbleSort(pedidos []Pedido) {
+	n := len(pedidos)
+	for i := 0; i < n-1; i++ {
+		for j := 0; j < n-i-1; j++ {
+			if pedidos[j].ValorTotal > pedidos[j+1].ValorTotal {
+				pedidos[j], pedidos[j+1] = pedidos[j+1], pedidos[j]
+			}
+		}
+	}
+}
+
+func quickSort(pedidos []Pedido) {
+	sort.Slice(pedidos, func(i, j int) bool {
+		return pedidos[i].ValorTotal < pedidos[j].ValorTotal
+	})
+}
+
+func insertionSort(pedidos []Pedido) {
+	n := len(pedidos)
+	for i := 1; i < n; i++ {
+		chave := pedidos[i]
+		j := i - 1
+
+		for j >= 0 && pedidos[j].ValorTotal > chave.ValorTotal {
+			pedidos[j+1] = pedidos[j]
+			j = j - 1
+		}
+		pedidos[j+1] = chave
+	}
+}
+
+func ordenarPedidos(pedidos []Pedido, algoritmo string) []Pedido {
+	copiaPedidos := make([]Pedido, len(pedidos))
+	copy(copiaPedidos, pedidos)
+
+	switch algoritmo {
+	case "bubblesort":
+		bubbleSort(copiaPedidos)
+	case "quicksort":
+		quickSort(copiaPedidos)
+	case "insertionsort":
+		insertionSort(copiaPedidos)
+	}
+	return copiaPedidos
+}
+
+func (f *FilaPedidos) ListarPedidos(ordenacao string) []Pedido {
+	if ordenacao != "" {
+		return ordenarPedidos(f.Pedidos, ordenacao)
+	}
 	return f.Pedidos
 }
+

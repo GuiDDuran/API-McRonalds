@@ -79,6 +79,12 @@ func RemoverProduto(w http.ResponseWriter, r *http.Request) {
 func ListarProdutos(w http.ResponseWriter, r *http.Request) {
     todosOsProdutos := produto.LProdutos.ListarProdutos()
 
+    if len(todosOsProdutos) == 0 {
+        logMessage("Não há produtos cadastrados")
+        http.Error(w, "Não há produtos cadastrados", http.StatusNotFound)
+        return
+    }
+
     w.WriteHeader(http.StatusOK)
     w.Header().Set("Content-Type", "application/json")
     logMessage("Listando produtos")
