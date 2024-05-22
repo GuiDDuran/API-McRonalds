@@ -4,7 +4,7 @@ import (
 	"Projeto/modelos/metricas"
 	"Projeto/modelos/produto"
 	"errors"
-	"sort"
+	"math"
 )
 
 type FilaPedidos struct {
@@ -41,7 +41,11 @@ func (f *FilaPedidos) Adicionar(delivery bool, produtosIDs []int) error {
 		valorTotal -= valorTotal * 0.10
 	}
 
+	valorTotal = math.Round(valorTotal*100) / 100
+
 	faturamentoTotal += valorTotal
+
+	faturamentoTotal = math.Round(faturamentoTotal*100) / 100
 
 	p := Pedido{
 		Delivery:   delivery,
@@ -78,10 +82,32 @@ func bubbleSort(pedidos []Pedido) {
 	}
 }
 
-func quickSort(pedidos []Pedido) {
-	sort.Slice(pedidos, func(i, j int) bool {
-		return pedidos[i].ValorTotal < pedidos[j].ValorTotal
-	})
+func quickSort(pedidos []Pedido, inicio, fim int) {
+	if inicio < fim {
+		i, j := inicio, fim
+		pivo := pedidos[inicio]
+
+		for i <= j {
+			for pedidos[i].ValorTotal < pivo.ValorTotal {
+				i++
+			}
+			for pivo.ValorTotal < pedidos[j].ValorTotal {
+				j--
+			}
+			if i <= j {
+				pedidos[i], pedidos[j] = pedidos[j], pedidos[i]
+				i++
+				j--
+			}
+		}
+
+		if inicio < j {
+			quickSort(pedidos, inicio, j)
+		}
+		if i < fim {
+			quickSort(pedidos, i, fim)
+		}
+	}
 }
 
 func insertionSort(pedidos []Pedido) {
@@ -106,7 +132,7 @@ func ordenarPedidos(pedidos []Pedido, algoritmo string) []Pedido {
 	case "bubblesort":
 		bubbleSort(copiaPedidos)
 	case "quicksort":
-		quickSort(copiaPedidos)
+		quickSort(copiaPedidos, 0, len(copiaPedidos)-1)
 	case "insertionsort":
 		insertionSort(copiaPedidos)
 	}
@@ -119,4 +145,3 @@ func (f *FilaPedidos) ListarPedidos(ordenacao string) []Pedido {
 	}
 	return f.Pedidos
 }
-
