@@ -1,6 +1,8 @@
 {
     "totalprodutos": 2,
     "pedidosencerrados": 0,
-    "pedidosandamento": 1,
-    "faturamentototal": 0
+    "pedidosandamento": 2,
+    "faturamentototal": 0,
+    "ticketmedio": 0,
+    "tempofuncionamento": 209
 }
