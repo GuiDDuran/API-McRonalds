@@ -9,7 +9,7 @@ import (
 )
 
 func logMessage(message string) {
-	var Horario = time.Now().Format("02/01/2006 15:04:05")
+	Horario := time.Now().Format("02/01/2006 15:04:05")
     fmt.Printf("%s - %s\n", Horario, message)
 }
 

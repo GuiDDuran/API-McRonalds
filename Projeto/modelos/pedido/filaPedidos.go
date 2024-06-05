@@ -68,7 +68,8 @@ func (f *FilaPedidos) Expedir() {
 	metricas.Metricas.PedidosAndamento--
 	metricas.Metricas.PedidosEncerrados++
 	metricas.Metricas.FaturamentoTotal = faturamentoTotal
-	metricas.Metricas.TicketMedio = faturamentoTotal / float64(metricas.Metricas.PedidosEncerrados)
+	metricas.Metricas.TicketMedio = math.Round((faturamentoTotal / float64(metricas.Metricas.PedidosEncerrados))*100) / 100
+
 }
 
 func bubbleSort(pedidos []Pedido) {

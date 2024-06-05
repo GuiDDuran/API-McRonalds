@@ -1,11 +1,11 @@
 Pedido 1:
 {
-    "delivery": false,
-    "produtos": [1]
+    "delivery": true,
+    "produtos": [1, 3, 3]
 }
 
 Pedido 2:
 {
-    "delivery": true,
-    "produtos": [1, 3]
+    "delivery": false,
+    "produtos": [1]
 }

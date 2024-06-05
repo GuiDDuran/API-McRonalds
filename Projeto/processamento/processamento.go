@@ -8,13 +8,18 @@ import (
 	"time"
 )
 
+func logMessage(message string) {
+	Horario := time.Now().Format("02/01/2006 15:04:05")
+	fmt.Printf("%s - %s\n", Horario, message)
+}
+
 func ProcessarPedidos() {
 	for {
 		if loja_handler.Aberta {
 			if len(pedido.FPedidos.Pedidos) > 0 {
 				pedido.FPedidos.Expedir()
 			} else {
-				fmt.Println("Não há pedidos ativos.")
+				logMessage("Não há pedidos ativos.")
 			}
 			time.Sleep(loja_handler.IntervaloExpedicao)
 		}

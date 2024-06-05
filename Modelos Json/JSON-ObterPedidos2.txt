@@ -1,5 +1,18 @@
 [
     {
+        "id": 2,
+        "delivery": false,
+        "produtos": [
+            {
+                "id": 1,
+                "nome": "Batata Frita",
+                "descricao": "Batata frita crocante e sequinha acompanhada de maionese da casa",
+                "valor": 20
+            }
+        ],
+        "valortotal": 20
+    },
+    {
         "id": 1,
         "delivery": true,
         "produtos": [
@@ -23,18 +36,5 @@
             }
         ],
         "valortotal": 108
-    },
-    {
-        "id": 2,
-        "delivery": false,
-        "produtos": [
-            {
-                "id": 1,
-                "nome": "Batata Frita",
-                "descricao": "Batata frita crocante e sequinha acompanhada de maionese da casa",
-                "valor": 20
-            }
-        ],
-        "valortotal": 20
     }
 ]
